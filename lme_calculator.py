@@ -2,7 +2,7 @@ import os
 import re
 
 def lme_eval(expr):
-	if sum([1 for char in expr if char not in "1234567890.+-/*()jJ "]) == 0:
+	if sum([1 for char in expr if char not in "1234567890.+-/* "]) == 0:
 		nums = re.split('\*|/|\+|\-', expr, 1)
 		try: numf, o = map(float, nums), expr[len(nums[0])]
 		except Exception: return None

@@ -4,12 +4,12 @@ import re
 def lme_eval(expr):
 	if sum([1 for char in expr if char not in "1234567890.+-/*()jJ "]) == 0:
 		nums = re.split('\*|/|\+|\-', expr, 1)
-		try: numf = map(float, nums)
+		try: numf, o = map(float, nums), expr[len(nums[0])]
 		except Exception: return None
-		if expr[len(nums[0])] == '+': return sum(numf)
-		elif expr[len(nums[0])] == '-': return numf[0] - numf[1]
-		elif expr[len(nums[0])] == '*': return numf[0]*numf[1]
-		elif expr[len(nums[0])] == '/': return numf[0]/numf[1] if numf[1] != 0 else None
+		if o == '+': return sum(numf)
+		elif o == '-': return numf[0] - numf[1]
+		elif o == '*': return numf[0]*numf[1]
+		elif o == '/': return numf[0]/numf[1] if numf[1] != 0 else None
 	else: return None
 
 def calcul(expr):
